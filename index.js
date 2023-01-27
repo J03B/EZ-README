@@ -3,6 +3,10 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const genMd = require('./utils/generateMarkdown.js');
 
+// Define global variables
+let userData = "";
+const licenseChoices = ['Apache 2.0','Boost','BSD','Eclipse','IBM Public','ISC','MIT','Mozilla Public','Perl','Artistic 2.0','SIL Open Front','Unlicense','WTF Public'];
+
 // Array of questions for user input critical to README content
 const questions = [
     {
@@ -27,7 +31,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'contributions',
+        name: 'credits',
         message: 'Please provide contribution guidelines:',
     },
     {
@@ -39,7 +43,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Choose a license from one of the options:',
-        choices: ['Apache 2.0','Boost','BSD','Eclipse','IBM Public','ISC','MIT','Mozilla Public','Perl','Artistic 2.0','SIL Open Front','Unlicense','WTF Public']
+        choices: licenseChoices
     },
     {
         type: 'input',
@@ -59,8 +63,9 @@ function writeToFile(fileName, data) {}
 // TODO: Create a function to initialize app
 function init() {
     inquirer.createPromptModule(questions).then((answers) => {
-        const data = JSON.stringify(answers,null,' ');
-    })
+        userData = JSON.stringify(answers,null,' ');
+    });
+    genMd.generateMarkdown(userData);
 }
 
 // Function call to initialize app
