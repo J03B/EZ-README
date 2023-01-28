@@ -27,7 +27,7 @@ const questions = [
     {
         type: 'input',
         name: 'description',
-        message: 'Please provide a description of your project, explaining the what, why, and how of your project. Include your motivation, what problem it solves, and maybe something you learned along the way:',
+        message: 'Provide a description of the project; explain the what (problem solved), why (motivation), and how:',
         validate: requireLetter
     },
     {
