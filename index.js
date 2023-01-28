@@ -2,6 +2,7 @@
 let inquirer = require('inquirer');
 const fs = require('fs');
 const genMd = require('./utils/generateMarkdown');
+const { title } = require('process');
 
 // Define global variables
 let userData = "";
@@ -58,12 +59,35 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    const tmpFolder = './tmp';
+    const prjFolder = `${tmpFolder}/${fileName}`
+    const filePath = `${prjFolder}/README.md`;
+    // first make sure that the tmp folder exists and create it if it doesn't
+    try {
+        if (!fs.existsSync(tmpFolder)) {
+            fs.mkdirSync(tmpFolder);
+        }
+        // then make sure the project folder is there so we don't overwrite other READMEs
+        if (!fs.existsSync(prjFolder)) {
+            fs.mkdirSync(prjFolder);
+        }
+    } 
+    catch (err) {
+        console.error(err);
+    }
+
+    // Then write the Readme to the folder
+    fs.writeFile(filePath, data, function (err) {
+        if (err) throw err;
+        console.log(`README.md saved in ${filePath}`);
+    });
+}
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then((answers) => {
-        console.log(genMd(answers));
+        writeToFile(answers.title,genMd(answers));
     })
     .catch((error) => {
         if (error) {
