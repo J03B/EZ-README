@@ -26,9 +26,9 @@ The ultimate goal of this project is to provide a personal README file generator
 
 ![A walkthrough video of how to use the application.](./assets/tutorial.mp4)
 
-The demo above produced the mock up below:
+The demo above produced the mock up below. Click on the image to go directly to the example file, exampleReadMe.md:
 
-![The example produced from the demo or walkthrough in the video above.](./assets/mockup-demo.png)
+[![The example produced from the demo or walkthrough in the video above.](./assets/mockup-demo.png)](./exampleReadMe.md)
 
 ### Task Completed
 The task here was to complete a project that would create high-quality files, generated with as little input as possible. Autonomy is essential to become a proficient developer, and saving time from writing README files would aid in those efforts. This challenge should set myself up for furure success by applying the core skills I've recently learned, meeting certain acceptance criteria with NodeJs. The criteria are documented in the Acceptance Criteria section. 
