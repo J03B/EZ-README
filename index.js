@@ -8,37 +8,51 @@ const { title } = require('process');
 let userData = "";
 const licenseChoices = ['Apache 2.0','Boost','BSD','Eclipse','IBM Public','ISC','MIT','Mozilla Public','Perl','Artistic 2.0','SIL Open Front','Unlicense','WTF Public'];
 
+// Function to validate that the answers to prompts are not empty
+const requireLetter = (val) => {
+    if (/\w/.test(val)) {       // checking for a-Z, 0-9
+        return true;
+    }
+    return 'Must contain letters';
+}
+
 // Array of questions for user input critical to README content
 const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'What is the title of your project?'
+        message: 'What is the title of your project?',
+        validate: requireLetter
     },
     {
         type: 'input',
         name: 'description',
-        message: 'Please provide a description of your project, explaining the what, why, and how of your project. Include your motivation, what problem it solves, and maybe something you learned along the way:'
+        message: 'Please provide a description of your project, explaining the what, why, and how of your project. Include your motivation, what problem it solves, and maybe something you learned along the way:',
+        validate: requireLetter
     },
     {
         type: 'input',
         name: 'installInstruct',
-        message: 'What are your projects installation instructions?'
+        message: 'What are your projects installation instructions?',
+        validate: requireLetter
     },
     {
         type: 'input',
         name: 'useCase',
-        message: 'How is this project to be used?'
+        message: 'How is this project to be used?',
+        validate: requireLetter
     },
     {
         type: 'input',
         name: 'credits',
-        message: 'Please provide contribution guidelines:'
+        message: 'Please provide contribution guidelines:',
+        validate: requireLetter
     },
     {
         type: 'input',
         name: 'testingInstruct',
-        message: 'Provide testing instructions:'
+        message: 'Provide testing instructions:',
+        validate: requireLetter
     },
     {
         type: 'list',
@@ -49,12 +63,14 @@ const questions = [
     {
         type: 'input',
         name: 'gitHubID',
-        message: 'What is your GitHub username?'
+        message: 'What is your GitHub username?',
+        validate: requireLetter
     },
     {
         type: 'input',
         name: 'email',
-        message: 'What is your email?'
+        message: 'What is your email?',
+        validate: requireLetter
     },
 ];
 

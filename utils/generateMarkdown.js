@@ -103,10 +103,7 @@ function markdownBadge(license) {
 // If there is no license, returns an empty string
 function renderLicenseSection(license) {
   if (allLicenses.includes(license)) {
-    return `## License
-    
-    ${markdownBadge(license)}
-    This project is licensed under the ${license} license.`;
+    return `## License\n\n${markdownBadge(license)}\n\nThis project is licensed under the ${license} license.`;
   }
   else {
     return "";
@@ -117,44 +114,44 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `# ${data.title}
 
-  ${markdownBadge(data.license)}
+${markdownBadge(data.license)}
 
-  ## Description
+## Description
 
-  ${data.description}
+${data.description}
 
-  ## Table of Contents
+## Table of Contents
 
-  1. [Installation](#installation)
-  2. [Usage](#usage)
-  3. [License](#license)
-  4. [Contributing](#contributing)
-  5. [Tests](#tests)
-  6. [Questions](#questions)
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [License](#license)
+4. [Contributing](#contributing)
+5. [Tests](#tests)
+6. [Questions](#questions)
 
-  ## Installation
+## Installation
 
-  ${data.installInstruct}
+${data.installInstruct}
 
-  ## Usage
+## Usage
 
-  ${data.useCase}
+${data.useCase}
 
-  ${renderLicenseSection(data.license)}
+${renderLicenseSection(data.license)}
 
-  ## Contributing
+## Contributing
 
-  ${data.credits}
+${data.credits}
 
-  ## Tests
+## Tests
 
-  ${data.testingInstruct}
+${data.testingInstruct}
 
-  ## Questions
+## Questions
 
-  If you have any questions, reach out to me through either of the methods below:
-  - [GitHub - ${data.gitHubID}](https://github.com/${data.gitHubID}/)
-  - [email - (${data.email})](mailto:${data.email})
+If you have any questions, reach out to me through either of the methods below:
+- [GitHub - ${data.gitHubID}](https://github.com/${data.gitHubID}/)
+- [email - (${data.email})](mailto:${data.email})
 `;
 }
 
