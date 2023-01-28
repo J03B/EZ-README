@@ -58,7 +58,7 @@ const questions = [
     },
 ];
 
-// TODO: Create a function to write README file
+// Function to write README file to tmp project file path
 function writeToFile(fileName, data) {
     const tmpFolder = './tmp';
     const prjFolder = `${tmpFolder}/${fileName}`
@@ -84,7 +84,7 @@ function writeToFile(fileName, data) {
     });
 }
 
-// TODO: Create a function to initialize app
+// Function that initializes the app
 function init() {
     inquirer.prompt(questions).then((answers) => {
         writeToFile(answers.title,genMd(answers));

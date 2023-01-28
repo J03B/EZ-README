@@ -1,5 +1,8 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Const of all possible licenses
+const allLicenses = ['Apache 2.0','Boost','BSD','Eclipse','IBM Public','ISC','MIT','Mozilla Public','Perl','Artistic 2.0','SIL Open Front','Unlicense','WTF Public'];
+
+// Function that returns a license badge based on which license is passed in
+// If there is no license, an empty string is ultimately returned in .md
 function renderLicenseBadge(license) {
   if (license == 'Apache 2.0') {
     return "](https://img.shields.io/badge/License-Apache_2.0-blue.svg";
@@ -42,8 +45,8 @@ function renderLicenseBadge(license) {
   }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// Function that returns the license link
+// If there is no license, an empty string is ultimately returned in .md
 function renderLicenseLink(license) {
   if (license == 'Apache 2.0') {
     return "https://opensource.org/licenses/Apache-2.0";
@@ -86,15 +89,20 @@ function renderLicenseLink(license) {
   }
 }
 
+// Function to compile the license badge and link
 function markdownBadge(license) {
-  return `[![License${renderLicenseBadge(license)})](${renderLicenseLink(license)})`;
+  if (allLicenses.includes(license)) {
+    return `[![License${renderLicenseBadge(license)})](${renderLicenseLink(license)})`;
+  }
+  else {
+    return '';
+  }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Function that returns the written license section of README
+// If there is no license, returns an empty string
 function renderLicenseSection(license) {
-  const allLicenses = ['Apache 2.0','Boost','BSD','Eclipse','IBM Public','ISC','MIT','Mozilla Public','Perl','Artistic 2.0','SIL Open Front','Unlicense','WTF Public'];
-  if (license in allLicenses) {
+  if (allLicenses.includes(license)) {
     return `## License
     
     ${markdownBadge(license)}
@@ -105,7 +113,7 @@ function renderLicenseSection(license) {
   }
 }
 
-// TODO: Create a function to generate markdown for README
+// Function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
 
@@ -117,12 +125,12 @@ function generateMarkdown(data) {
 
   ## Table of Contents
 
-  - [Installation](#Installation)
-  - [Usage](#Usage)
-  - [Credits](#Credits)
-  - [License](#License)
-  - [Testing](#Testing)
-  - [Questions](#Questions)
+  1. [Installation](#installation)
+  2. [Usage](#usage)
+  3. [License](#license)
+  4. [Contributing](#contributing)
+  5. [Tests](#tests)
+  6. [Questions](#questions)
 
   ## Installation
 
@@ -145,9 +153,10 @@ function generateMarkdown(data) {
   ## Questions
 
   If you have any questions, reach out to me through either of the methods below:
-  [GitHub - ${data.gitHubID}](https://github.com/${data.gitHubID}/)
-  [email - (${data.email})](mailto:${data.email})
+  - [GitHub - ${data.gitHubID}](https://github.com/${data.gitHubID}/)
+  - [email - (${data.email})](mailto:${data.email})
 `;
 }
 
+// Export the function so index.js can use it as a require
 module.exports = generateMarkdown;
