@@ -9,7 +9,7 @@
   "author": "Joe Black",
   "license": "MIT",
   "dependencies": {
-    "inquirer": "^6.5.2"
+    "inquirer": "^8.2.4"
   },
   "repository": {
     "type": "git",

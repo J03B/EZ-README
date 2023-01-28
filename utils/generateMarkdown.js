@@ -132,19 +132,19 @@ function generateMarkdown(data) {
 
   ${data.useCase}
 
-  ## Credits
+  ${renderLicenseSection(data.license)}
+
+  ## Contributing
 
   ${data.credits}
 
-  ${renderLicenseSection(data.license)}
-
-  ## Testing
+  ## Tests
 
   ${data.testingInstruct}
 
   ## Questions
 
-  If you have any questions, reach out through either of the methods below:
+  If you have any questions, reach out to me through either of the methods below:
   [GitHub - ${data.gitHubID}](https://github.com/${data.gitHubID}/)
   [email - (${data.email})](mailto:${data.email})
 `;
